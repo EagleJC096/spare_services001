@@ -1,0 +1,43 @@
+nav + img, .navbar {
+  width: 100%;
+}
+
+::selection {
+  color: white;
+  background: dimgray;
+}
+
+nav {
+  color: darkgray;
+}
+nav h1 {
+  margin-right: 3%;
+  color: aliceblue;
+}
+nav .sr-only {
+  font-weight: bold;
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 1000px) {
+  .navbar-text {
+    visibility: collapse;
+  }
+}
+#main {
+  background-color: #f2f2f2;
+}
+
+.textbox {
+  padding-top: 3%;
+  padding-bottom: 5%;
+  text-align: left;
+  width: 75%;
+}
+
+nav + img {
+  position: relative;
+  z-index: -1;
+}
+
+/*# sourceMappingURL=main.css.map */
