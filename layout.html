@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}{% endblock %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/main.css">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" href="/"><img src="/static/book.jpg" height="50px"></a>
+            <h1>Book Look</h1>
+            <div class="collapse navbar-collapse" id="navbar">
+                <!--Thanks to CS50x for the collapsable navbar (https://ide.legacy.cs50.io/<USERNAME>/ide50#openfile-x [pset7 layout.html]) --> 
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/search">Lookup</a>
+                          </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+            
+        </nav>
+        <br/>
+        <br/>
+        <br/>
+        {% block image %}{% endblock %}
+        <div id="main" align="center" height="100%">
+            <div class="textbox">
+                    <br/>
+                    {% block main %}{% endblock %}
+                    <br/>
+            </div>
+            
+        </div>
+        <footer>
+            <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+                &copy;Copyright 2019 Spare Services. All rights reserved.
+                <br/>
+                All book data taken from Goodreads. All rights reserved.
+            </nav>    
+        </footer>
+    </body>
+</html>

@@ -1,63 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>My Webpage</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <link rel="stylesheet" href="main.css">
-    </head>
-    <body>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-expand-sm navbar-dark bg-dark">
-            <a class="navbar-brand" href="./index.html"><img src="./spare_services.png" height="50px"></a>
-            <h1>Spare Services</h1>
-            <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="./index.html">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Vault</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                          
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Help</a>
-                    </li>
-            </ul>
-            <span class="navbar-text">
-                <a class="nav-link" href="#">User</a>
-            </span>
-        </nav>
-        <!-- 21:9 aspect ratio -->
+{% extends "layout.html" %}
 
-        <img src="./img9.jpg" width="100%"></img>
-        <div id="main" align="center">
-            <div class="textbox">
-                    <br/>
-                    <p>Gerdál woke up with a jerk! Asleep? Why had he fallen asleep? Where was he? Since he wasn't struck with a sense of recognition, why was he here? Focus! Identify your surroundings and act accordingly. Well, for starters, there was this blue glow . . . it was actually quite nice. A few shades darker, and it would be—focus! That was a containment ray shield. Not good. What did he know about ray shields . . . apart from their color. A terminal! Yes. All containment ray shields had a terminal that controlled them.</p>
+{% block title %}
+    Book Look | Home
+{% endblock %}
 
-                    <p>Then Gerdál realized that he was lying on the ground. He pushed himself to a sitting position and the room twirled like a rotating kaleidoscope until he could see clearly. No bumps or abnormal pain in the head or neck regions. Clearly he had been drugged. Idach! That's how he got here! But what was Idach's game? Why these trials? First things first, he had to get out of here. What was he doing? Yes. The terminal. Several kaleidoscopes later, he found it . . . on the other side of the shield in the far wall. This place was huge! Like some kind of arena. Focus! Well, obliterating the terminal was out of the question. Was there some way to get around the shield? No holes were visible above or to the sides . . . how about the floor? Great. The "surface" that he was standing on was a cross-shield suspended a few inches above the ground.</p>
-                
-                    <p>Suddenly, Gerdál jerked and let out a grunt. A massive cramp originating in his abdomen gripped his frame and paralyzed him for a few seconds before letting go. Wonderful. The drugs that Idach had administered obviously did more than disorientate him. He had to get out of here. An energy blast from his magma-gloves? Before he could try, another cramp seized him. When it was over, he lurched over to the side of the shield and delivered a powerful energy blow to the shield. The energy slammed into the shield, then dissipated.</p>
-                
-                    <p>Great. Not only was this a containment ray shield, but it could adsorb energy to strengthen itself. Ahhhh! Another cramp. They were getting stronger, Gerdál thought through his pain. Wow, that was painful. When the agony left, Gerdál eased himself to the ground. He was getting sleepier and sleepier. He hoped that another cramp wouldn't hit him. If only he could use the pain to give him strength. He smiled. Absorbing pain would be nice . . . .</p>
-                
-                    <p>That was it! Absorption. In his drugged state he had forgotten the one weakness of energy absorption; that shield could only absorb so much before it overloaded it's power container! Where was that terminal? There it was. Cables stretched off from the shield in every direction, taking the energy used against it into energy containers mounted in the walls of the arena. Yes! There was one next to the terminal. Gerdál staggered over to it as the next cramp hit. It was so intense that he fell to the ground, his face inches from the shield. Even in his agony, his intense determination took over, and he extended the fighting claws in his gloves. He cried out as he pushed the claws into the shield. Though the cramp still lingered painfully, he activated the glove, exerting the tremendous magma energy there contained. The only sound heard was the metallic humming of the gloves, and then the cable began to glow with the mega amounts of energy that passed through it.</p>
-                
-                    <p>Then, with a mighty explosion, the terminal and the energy container near it exploded! The containment ray shield shimmered as if struck by a fatal blow, and then faded away, reluctant to give up its prey. Ironic, wasn't it, that his escape plan came from the agony he was experiencing? Gerdál, still bent over with the pain, staggered and stumbled toward the exit. He had to make it, he had to make it . . . . What happened to the exit? Gerdál found himself staring up at metal girders and support beams. The pain in his body rose to unparalleled levels. As he closed his eyes, bracing for the final blow that would take him, he heard the exit door open with a whoosh! Light footsteps raced toward him.</p>
-                    <p>"Gerdál! Gerdál! I've got the antidote! Gerdál! Stay with me!"</p>
-                    <p>The light that seeped through his eyelids dimmed as the figure bent over him.</p>
-                    <p>"Come on, Gerdál! Almost there."</p>
-                    <p>Then the light faded completely, and Gerdál plummeted into a deep, peaceful slumber.</p>
-                    <br/>
-            </div>
-            
+{% block main %}
+    <p></p>
+    <form action="/search" method="post" align="center">
+        <div class="form-group">
+            <input autofocus class="form-control" name="q" placeholder="Book title, author, or ISBN #" type="text"/>
+            <button class="btn btn-primary" type="submit">Search</button>
         </div>
-        <footer>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                &copy;Copyright 2019 Spare Services. All rights reserved.
-            </nav>    
-        </footer>
-    </body>
-</html>
+    </form>
+    <br/>
+    <p>
+        Welcome to Book Look: a web application built on the <a href="https://goodreads.com">Goodreads</a> API. In the search bar above, type in the book title you want, the author you're interested in, or the ISBN number you're curious about. Then hit enter or the "Search" button to begin your journy. Feel free to contact us with comments, questions, or concerns. Enjoy the adventure!
+    </p>
+{% endblock %}

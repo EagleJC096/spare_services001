@@ -1,3 +1,7 @@
+body {
+  height: 100%;
+}
+
 nav + img, .navbar {
   width: 100%;
 }
@@ -25,7 +29,19 @@ nav .sr-only {
   }
 }
 #main {
-  background-color: #f2f2f2;
+  /*background-color: #f2f2f2;*/
+  height: 100%;
+}
+
+.form-control {
+  width: auto;
+  display: inline-block;
+}
+
+
+
+#contentheader {
+  text-align: center;
 }
 
 .textbox {
@@ -33,11 +49,25 @@ nav .sr-only {
   padding-bottom: 5%;
   text-align: left;
   width: 75%;
+  height: 100%;
 }
 
 nav + img {
   position: relative;
   z-index: -1;
+}
+
+table tr td a {
+  display:block;
+  height:100%;
+  width:100%;
+}
+
+#goodread {
+  background-color: gray;
+  border-radius: 15px 50px;
+  padding-top: 25px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=main.css.map */

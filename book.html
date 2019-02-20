@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Look | {{ title }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/static/full_form.css">
+{% endblock %}
+
+{% block main %}
+    <br/>
+    <div class="row">
+        <div class="col"><h1>{{ title }}</h1>
+            <h5>By {{ author }}</h5>
+            <br/>
+            <p>Year: {{ year }}</p>
+        </div>
+        <div class="col"></div>
+        <div id="goodread" class="col">
+            <p>Data From Goodreads:</p>
+            <h6>Total reviews: {{ total }}</h6>
+            <h6>Average review: {{ avg }}</h6>
+        </div>
+    </div>
+    
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <table class="table table-striped">
+        {% for review in reviewFetch %}
+            <tr>
+                <th>
+                    {% if review.stars == 1 %}
+                        <h6>☻☺☺☺☺</h6>
+                    {% elif review.stars == 2 %}
+                        <h6>☻☻☺☺☺</h6>
+                    {% elif review.stars == 3 %}
+                        <h6>☻☻☻☺☺</h6>
+                    {% elif review.stars == 4 %}
+                        <h6>☻☻☻☻☺</h6>
+                    {% else %}
+                        <h6>☻☻☻☻☻</h6>
+                    {% endif %}
+                    
+                    <h5>{{ review.title }}</h5>
+                    <p>{{ review.username }}</p>
+                    <h6>{{ review.text }}</h6>
+                    <br>
+                    <br>
+                    <p style="size: 5">{{ review.created }}</p>
+                </th>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <br>
+    <p align="center">_______________________________________________________________________________________</p>
+    <br>
+    <h2 align="center">Submit a Review</h2>
+    <br>
+    <form action="/submit_rev" method="post" align="center">
+        <div class="form-group">
+                <input autofocus class="form-control" name="stars" placeholder="Stars" type="number" default="3"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="title" placeholder="Review Title" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="isbn" value="{{ isbn }}" type="hidden"/>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="text" rows="7" type="textarea" placeholder="But A review here"></textarea>
+        </div>
+    
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+{% endblock %}
+

@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Look | Search Result
+{% endblock %}
+
+{% block main %}
+    <p></p>
+    <form action="/search" method="post" align="center">
+        <div class="form-group">
+            <input autofocus class="control_form, form-control" name="q" value="{{ search }}" placeholder="Book title, author, or ISBN #" type="text"/>
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+    <br/>
+    <p>
+        <table class="table">
+            <thead class="thead-light">
+                    <tr>
+                        <th colspan="4"><h3 align="center">Results</h3></th>
+                    </tr>
+                    <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">ISBN</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                    </tr>
+            </thead>
+            {% for isbn_list in isbns %}
+                    <th><a role="button" href="/books/{{ isbn_list.isbn }}" class="btn btn-secondary">Select</button></th>
+                    <td>{{ isbn_list.isbn }}</td>
+                    <td>{{ isbn_list.title }}</td>
+                    <td>{{ isbn_list.author }}</td>
+                </tr>
+            {% endfor %}
+            {% for title_list in titles %}
+                <tr scope="row">
+                    <th><a role="button" href="/books/{{ title_list.isbn }}" class="btn btn-secondary">Select</button></th>
+                    <th>{{ title_list.isbn }}</th>
+                    <th>{{ title_list.title }}</th>
+                    <th>{{ title_list.author }}</th>
+                </tr>
+            {% endfor %}
+            {% for author_list in authors %}
+                <tr scope="row">
+                    <th><a role="button" href="/books/{{ author_list.isbn }}" class="btn btn-secondary">Select</button></th>
+                    <th>{{ author_list.isbn }}</th>
+                    <th>{{ author_list.title }}</th>
+                    <th>{{ author_list.author }}</th>
+                </tr>
+            {% endfor %}
+        </table>
+    </p>
+{% endblock %}
